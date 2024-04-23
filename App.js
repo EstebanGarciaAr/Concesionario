@@ -1,20 +1,40 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { Image, Text, View, StyleSheet, ScrollView } from "react-native";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+
+//import de esteban
+//import DrivingTest from "./Screens/components/DrivingTest";
+import VehicleList from "./Screens/components/VehicleList";
+//import VehicleSearch from "./Screens/components/VehicleSearch";
+//import de luisa 
+//import Price from './Screens/components/Price';
+//import StartUp from "./Screens/components/StartUp.jsx";
+//import Contact from "./Screens/components/Contact";
+//import de andres
+//import HistoryBackground from './Screens/components/serviceHistoryModule/HistoryBackground'
+//import NotificationBackground from './Screens/components/notificationModule/NotificationBackground'
+//import ServiceBackground from './Screens/components/serviceRequestModule/ServiceBackground'        
+
+export const App =() => {
+  return(
+    
+    //<DrivingTest/>
+    //<VehicleSearch/>
+    <VehicleList/>
+    
+
+   //luisa
+   //<StartUp />
+   //<Price/>
+   //<Contact />
+   //andres
+   //<SafeAreaProvider>
+    //<ServiceBackground/>
+   //</SafeAreaProvider>
+   //<HistoryBackground/>
+   // <NotificationBackground/>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App

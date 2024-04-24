@@ -1,8 +1,13 @@
 import React from "react"; 
-import { Image, Text, View, StyleSheet, ScrollView } from "react-native";
+import { Image, Text, View, StyleSheet, ScrollView, Button } from "react-native";
+//import { useNavigation } from "@react-navigation/native";
+
 
 
 const VehicleList = () => {
+    //const navigation = useNavigation();
+
+
     const vehicleItem = (list) => (
         <View style={styles.container} key={list.id}>
             <Text style={styles.title}>{list.title}</Text>
@@ -15,14 +20,21 @@ const VehicleList = () => {
                 <Text style={[styles.title,styles.description,styles.data]}>${list.price}</Text>
             </View>
         </View>
+        
     );
     return (
         <ScrollView>
           {Vehicle.map(vehicleItem)}
+          <View>
+            
+          </View> 
         </ScrollView>
+        
     );
 };
 
+
+//<Button onPress={()=> navigation.navigate('VehicleSearch')}><Text>Filtrar Vehiculos</Text></Button>
 
 const Vehicle = [
     {

@@ -1,7 +1,11 @@
-import React from "react";
+import React,{useState} from "react";
 import { TextInput, Text, View, StyleSheet, SafeAreaView, Button } from "react-native";
 
 const DrivingTest = () => {
+
+    
+
+
     
     return (
         <View style={styles.container1}>
@@ -10,7 +14,7 @@ const DrivingTest = () => {
                 
                 <SafeAreaView/>
                 <Text style={[styles.title,styles.data]}>Nombre*</Text>
-                <TextInput style={styles.placeholder} placeholder="Nombre"/>
+                <TextInput style={styles.placeholder}  placeholder="Nombre" maxLength={20}/>
                 <Text style={[styles.title,styles.data]}>Apellido*</Text>
                 <TextInput style={styles.placeholder} placeholder="Apellido"/>
                 <Text style={[styles.title,styles.data]}>Telefono*</Text>

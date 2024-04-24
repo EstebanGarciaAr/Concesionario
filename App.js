@@ -1,40 +1,59 @@
 import React from "react";
-import { Image, Text, View, StyleSheet, ScrollView } from "react-native";
-
+import 'react-native-gesture-handler'
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-//import de esteban
-//import DrivingTest from "./Screens/components/DrivingTest";
-//import VehicleList from "./Screens/components/VehicleList";
-//import VehicleSearch from "./Screens/components/VehicleSearch";
+//import StartUp from "./Screens/components/StartUp";
+//import NotificationBackground from './Screens/components/notificationModule/NotificationBackground'
+//import HistoryBackground from './Screens/components/serviceHistoryModule/HistoryBackground'
+//import ServiceBackground from './Screens/components/serviceRequestModule/ServiceBackground' 
+//import VehicleList from "./Screens/components/VehicleList"
+//import VehicleSearch from "./Screens/components/VehicleSearch"
+import DrivingTest from "./Screens/components/DrivingTest"
+//import Contact from "./Screens/components/Contact"
+
+//import FirebaseState from './context/firebase/firebaseState'
+//import CarState from './context/car/carState'
+
+
+
 //import de luisa 
 //import Price from './Screens/components/Price';
-//import StartUp from "./Screens/components/StartUp.jsx";
-//import Contact from "./Screens/components/Contact";
-//import de andres
-//import HistoryBackground from './Screens/components/serviceHistoryModule/HistoryBackground'
-import NotificationBackground from './Screens/components/notificationModule/NotificationBackground'
-//import ServiceBackground from './Screens/components/serviceRequestModule/ServiceBackground'        
 
-export const App =() => {
+
+
+      
+
+/*export const App =() => {
+  const Stack = createStackNavigator()
   return(
-    
-    //<DrivingTest/>
-    //<VehicleSearch/>
-    //<VehicleList/>
-    
+    <SafeAreaProvider>
+      <FirebaseState>
+        <CarState>
+            <NavigationContainer>
+                <Stack.Screen name='VehicleList' component={VehicleList}/>
+                <Stack.Screen name='StartUp' component={StartUp}/>
+                <Stack.Screen name='NotificationBackground' component={NotificationBackground}/>
+                <Stack.Screen name='HistoryBackground' component={HistoryBackground}/>
+                <Stack.Screen name='ServiceBackground' component={ServiceBackground}/>
+               
+                <Stack.Screen name='VehicleSearch' component={VehicleSearch}/>
+                <Stack.Screen name='DrivingTest' component={DrivingTest}/>
+                <Stack.Screen name='Contact' component={Contact}/>
 
-   //luisa
-   //<StartUp />
-   //<Price/>
-   //<Contact />
-   //andres
-   <SafeAreaProvider>
-    <NotificationBackground/>
-   </SafeAreaProvider>
-   //<HistoryBackground/>
-   // <NotificationBackground/>
-   //<ServiceBackground/>
+            </NavigationContainer>
+        </CarState>
+      </FirebaseState>
+    </SafeAreaProvider>
+  );
+}
+*/
+
+export const App =() =>{
+  return(
+    <DrivingTest/>
+
   );
 }
 

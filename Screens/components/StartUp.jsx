@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity, Alert, TextInput, FlatList } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { Container, Buttom} from 'native-base'
 
 const StartUp = () => {
+    
     const [searchQuery, setSearchQuery] = useState('');
     const [filteredData, setFilteredData] = useState([]);
 
@@ -19,35 +22,38 @@ const StartUp = () => {
     };
 
     return (
-        <View style={styles.container}>
-            <Image style={styles.image}
-                source={require('./css/logo blanco.png')} />
+        
+            <View style={styles.container}>
+                <Image style={styles.image}
+                    source={require('./css/logo blanco.png')} />
 
-            <Text style={styles.title}>Drive Market</Text>
+                <Text style={styles.title}>Drive Market</Text>
 
-            <TextInput
-                style={styles.input}
-                placeholder="Buscar..."
-                onChangeText={handleSearch}
-                value={searchQuery}
-            />
+                <TextInput
+                    style={styles.input}
+                    placeholder="Buscar..."
+                    onChangeText={handleSearch}
+                    value={searchQuery}
+                />
 
-            <FlatList
-                data={filteredData}
-                keyExtractor={(item) => item.id.toString()}
-                renderItem={({ item }) => (
-                    <Text style={styles.item}>{item.name}</Text>
-                )}
-            />
-            <Text style={styles.text1}>Categorias:</Text>
-           
-            <Text style={styles.text2}>Servicio de taller</Text>
-            <Image style={styles.imagecar} source={require('./css/taller.jpg')} />
-            <TouchableOpacity style={styles.button} onPress={() => Alert.alert('mirar catalogo')}>
-                <Text style={styles.buttonText}>Agendar cita</Text>
-            </TouchableOpacity>
+                <FlatList
+                    data={filteredData}
+                    keyExtractor={(item) => item.id.toString()}
+                    renderItem={({ item }) => (
+                        <Text style={styles.item}>{item.name}</Text>
+                    )}
+                />
+                <Text style={styles.text1}>Categorias:</Text>
+            
+                <Text style={styles.text2}>Servicio de taller</Text>
+                <Image style={styles.imagecar} source={require('./css/taller.jpg')} />
+                <TouchableOpacity style={styles.button} onPress={() => Alert.alert('mirar catalogo')}>
+                    <Text style={styles.buttonText}>Agendar cita</Text>
+                </TouchableOpacity>
 
-        </View>
+                
+
+            </View>
     );
 }
 

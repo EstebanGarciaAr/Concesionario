@@ -1,13 +1,23 @@
-import React from "react";
 import {Text, TextInput, View, StyleSheet, SafeAreaView, Button} from "react-native";
+import React, {useState} from 'react'
 
 const VehicleSearch = () => {
+
+    const [text, setText] = useState('');
+
+    const handleTextChange = newT => {
+        if (/^[a-zA-Z]*$/.test(newT) && newT.length <= 20) {
+            setText(newT);
+        }
+    }
+
+
     return(
         <View style={styles.container}>
             <SafeAreaView/>
             <Text style={styles.title}>Buscar Vehículos</Text>
             <View style={styles.containerInput}>
-                <TextInput style={styles.input} placeholder="Ingresa tu busqueda"/>
+                <TextInput style={styles.input} onChangeText={handleTextChange} placeholder="Ingresa tu busqueda" maxLength={20}/>
             </View>
             <View style={styles.button}>
                     <Button  title="Filtro Avanzado"/>

@@ -5,7 +5,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 //import de esteban
 //import DrivingTest from "./Screens/components/DrivingTest";
-import VehicleList from "./Screens/components/VehicleList";
+//import VehicleList from "./Screens/components/VehicleList";
 //import VehicleSearch from "./Screens/components/VehicleSearch";
 //import de luisa 
 //import Price from './Screens/components/Price';
@@ -13,7 +13,7 @@ import VehicleList from "./Screens/components/VehicleList";
 //import Contact from "./Screens/components/Contact";
 //import de andres
 //import HistoryBackground from './Screens/components/serviceHistoryModule/HistoryBackground'
-//import NotificationBackground from './Screens/components/notificationModule/NotificationBackground'
+import NotificationBackground from './Screens/components/notificationModule/NotificationBackground'
 //import ServiceBackground from './Screens/components/serviceRequestModule/ServiceBackground'        
 
 export const App =() => {
@@ -21,7 +21,7 @@ export const App =() => {
     
     //<DrivingTest/>
     //<VehicleSearch/>
-    <VehicleList/>
+    //<VehicleList/>
     
 
    //luisa
@@ -29,11 +29,12 @@ export const App =() => {
    //<Price/>
    //<Contact />
    //andres
-   //<SafeAreaProvider>
-    //<ServiceBackground/>
-   //</SafeAreaProvider>
+   <SafeAreaProvider>
+    <NotificationBackground/>
+   </SafeAreaProvider>
    //<HistoryBackground/>
    // <NotificationBackground/>
+   //<ServiceBackground/>
   );
 }
 

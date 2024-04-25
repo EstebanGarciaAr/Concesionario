@@ -26,37 +26,40 @@ import Price from './Screens/components/Price';
 
       
 
-/*export const App =() => {
+export const App =() => {
   const Stack = createStackNavigator()
   return(
     <SafeAreaProvider>
-      <FirebaseState>
-        <CarState>
+        <FirebaseState>
+          <CarState>
             <NavigationContainer>
-                <Stack.Screen name='VehicleList' component={VehicleList}/>
+              <Stack.Navigator>
                 <Stack.Screen name='StartUp' component={StartUp}/>
+                <Stack.Screen name='VehicleSearch' component={VehicleSearch}/>
+                <Stack.Screen name='VehicleList' component={VehicleList}/>
+                <Stack.Screen name='Price' component={Price}/>
                 <Stack.Screen name='NotificationBackground' component={NotificationBackground}/>
                 <Stack.Screen name='HistoryBackground' component={HistoryBackground}/>
                 <Stack.Screen name='ServiceBackground' component={ServiceBackground}/>
-               
-                <Stack.Screen name='VehicleSearch' component={VehicleSearch}/>
                 <Stack.Screen name='DrivingTest' component={DrivingTest}/>
                 <Stack.Screen name='Contact' component={Contact}/>
-
+              </Stack.Navigator>
             </NavigationContainer>
-        </CarState>
-      </FirebaseState>
+          </CarState>
+        </FirebaseState>
     </SafeAreaProvider>
   );
 }
-*/
 
-export const App =() =>{
+
+
+
+/*export const App =() =>{
   return(
     <Price/>
     //<VehicleSearch/>
 
   );
-}
+}*/
 
 export default App

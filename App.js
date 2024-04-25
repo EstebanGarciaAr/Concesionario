@@ -4,22 +4,23 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-//import StartUp from "./Screens/components/StartUp";
-//import NotificationBackground from './Screens/components/notificationModule/NotificationBackground'
-//import HistoryBackground from './Screens/components/serviceHistoryModule/HistoryBackground'
-//import ServiceBackground from './Screens/components/serviceRequestModule/ServiceBackground' 
-//import VehicleList from "./Screens/components/VehicleList"
-//import VehicleSearch from "./Screens/components/VehicleSearch"
+import StartUp from "./Screens/components/StartUp";
+import NotificationBackground from './Screens/components/notificationModule/NotificationBackground'
+import HistoryBackground from './Screens/components/serviceHistoryModule/HistoryBackground'
+import ServiceBackground from './Screens/components/serviceRequestModule/ServiceBackground' 
+import VehicleList from "./Screens/components/VehicleList"
+import VehicleSearch from "./Screens/components/VehicleSearch"
 import DrivingTest from "./Screens/components/DrivingTest"
-//import Contact from "./Screens/components/Contact"
+import Contact from "./Screens/components/Contact"
 
-//import FirebaseState from './context/firebase/firebaseState'
-//import CarState from './context/car/carState'
+import FirebaseState from './context/firebase/firebaseState'
+import CarState from './context/car/carState'
 
 
 
 //import de luisa 
-//import Price from './Screens/components/Price';
+import Price from './Screens/components/Price';
+
 
 
 
@@ -52,7 +53,8 @@ import DrivingTest from "./Screens/components/DrivingTest"
 
 export const App =() =>{
   return(
-    <DrivingTest/>
+    <Price/>
+    //<VehicleSearch/>
 
   );
 }

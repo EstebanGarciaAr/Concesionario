@@ -9,11 +9,53 @@ const Price = () => {
     const [direccion, setDireccion] = useState('');
     const [ciudad, setCiudad] = useState('');
     const [comentario, setComentario] = useState('');
+    const [error, setError] = useState('');
 
 
     const handleRequestQuote = () => {
 
         Alert.alert('Solicitud de Cotización Enviada', 'Pronto nos pondremos en contacto contigo. ¡Gracias!');
+    };
+
+    const handleValidation = () => {
+        let errors = '';
+
+        if (!name.trim()) {
+            errors += 'El campo Nombre es obligatorio.\n';
+        }
+        else if (!/^[a-zA-Z]*$/.test(name.trim())) {
+            errors += 'El nombre debe estar en el formato correcto, solo acepta letras.\n';
+        }
+        if (!email.trim()) {
+            errors += 'El campo email es obligatorio.\n';
+        }
+        if (!phone.trim()) {
+            errors += 'El campo Teléfono es obligatorio.\n';
+        } else if (!/^\d{3} \d{3} \d{4}$/.test(phone.trim())) {
+            errors += 'El teléfono debe estar en el formato correcto (### ### ####), solo acepta números.\n';
+        }
+        if (!cedula.trim()) {
+            errors += 'El campo Cédula es obligatorio.\n';
+        } else if (!/^\d{11}$/.test(cedula.trim())) {
+            errors += 'El número de identificación debe tener 11 dígitos.\n';
+        }
+        if (!direccion.trim()) {
+            errors += 'El campo Dirección es obligatorio.\n';
+        }
+        if (!ciudad.trim()) {
+            errors += 'El campo Ciudad es obligatorio.\n';
+        }
+        else if (!/^[a-zA-Z]*$/.test(ciudad.trim())) {
+            errors += 'La ciudad debe estar en el formato correcto, solo acepta letras.\n';
+        }
+       
+
+        setError(errors);
+        if (errors) {
+            Alert.alert('Errores', errors);
+        } else {
+            // Esta es la lógica si la validación es exitosa,para guardarlo en la base de datos
+        }
     };
 
     return (
@@ -25,7 +67,7 @@ const Price = () => {
             <TextInput
                 style={styles.input}
                 placeholder="Nombre"
-                onChangeText={(text) => setName(text)}
+                onChangeText={setName}
                 value={name}
             />
 
@@ -33,7 +75,7 @@ const Price = () => {
             <TextInput
                 style={styles.input}
                 placeholder="Correo Electrónico"
-                onChangeText={(text) => setEmail(text)}
+                onChangeText={setEmail}
                 value={email}
                 keyboardType="email-address"
             />
@@ -41,27 +83,28 @@ const Price = () => {
             <TextInput
                 style={styles.input}
                 placeholder="Número de Teléfono"
-                onChangeText={(text) => setPhone(text)}
+                onChangeText={setPhone}
                 value={phone}
                 keyboardType="phone-pad"
             />
             <TextInput
                 style={styles.input}
                 placeholder="Ingrese su cédula"
-                onChangeText={(text) => setCedula(text)}
+                onChangeText={setCedula}
                 value={cedula}
+                keyboardType="numeric"
             />
             <TextInput
                 style={styles.input}
                 placeholder="Ingrese su dirección"
-                onChangeText={(text) => setDireccion(text)}
+                onChangeText={setDireccion}
                 value={direccion}
             />
 
             <TextInput
                 style={styles.input}
                 placeholder="Ingrese su ciudad"
-                onChangeText={(text) => setCiudad(text)}
+                onChangeText={setCiudad}
                 value={ciudad}
             />
 
@@ -79,8 +122,13 @@ const Price = () => {
             <Button
                 title="Solicitar Cotización"
                 color="#bcbfc2"
-                onPress={handleRequestQuote}
+                onPress={() => {
+                    handleRequestQuote();
+                    handleValidation(); 
+                }}
             />
+
+                {error ? <Text style={styles.error}>{error}</Text> : null}
 
         </View>
     );

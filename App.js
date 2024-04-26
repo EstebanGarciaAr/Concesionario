@@ -12,19 +12,10 @@ import VehicleList from "./Screens/components/VehicleList"
 import VehicleSearch from "./Screens/components/VehicleSearch"
 import DrivingTest from "./Screens/components/DrivingTest"
 import Contact from "./Screens/components/Contact"
+import Price from './Screens/components/Price'
 
 import FirebaseState from './context/firebase/firebaseState'
-import CarState from './context/car/carState'
-
-
-
-//import de luisa 
-import Price from './Screens/components/Price';
-
-
-
-
-      
+import CarState from './context/car/carState'   
 
 export const App =() => {
   const Stack = createStackNavigator()
@@ -50,16 +41,5 @@ export const App =() => {
     </SafeAreaProvider>
   );
 }
-
-
-
-
-/*export const App =() =>{
-  return(
-    <Price/>
-    //<VehicleSearch/>
-
-  );
-}*/
 
 export default App

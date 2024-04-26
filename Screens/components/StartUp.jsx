@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, Image, TouchableOpacity, Alert, TextInput, FlatList } from "react-native";
+import { StyleSheet, Text, Button, View, Image, TouchableOpacity, Alert, TextInput, FlatList } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { Container, Buttom} from 'native-base'
+import { Container, Buttom } from 'native-base'
 
-const StartUp = () => {
-    
+function StartUp({ navigation }) {
+
     const [searchQuery, setSearchQuery] = useState('');
     const [filteredData, setFilteredData] = useState([]);
 
@@ -22,42 +22,55 @@ const StartUp = () => {
     };
 
     return (
-        
-            <View style={styles.container}>
-                <Image style={styles.image}
-                    source={require('./css/logo blanco.png')} />
 
-                <Text style={styles.title}>Drive Market</Text>
+        <View style={styles.container}>
+            <Image style={styles.image}
+                source={require('./css/logo blanco.png')} />
 
-                <TextInput
-                    style={styles.input}
-                    placeholder="Buscar..."
-                    onChangeText={handleSearch}
-                    value={searchQuery}
+            <Text style={styles.title}>Drive Market</Text>
+
+            <TextInput
+                style={styles.input}
+                placeholder="Buscar..."
+                onChangeText={handleSearch}
+                value={searchQuery}
+            />
+
+            <View style={styles.buttonContainer}>
+                <Button
+                    title="Manejo"
+                    onPress={() => navigation.navigate('DrivingTest')}
+                    color="#6495ED"
                 />
-
-                <FlatList
-                    data={filteredData}
-                    keyExtractor={(item) => item.id.toString()}
-                    renderItem={({ item }) => (
-                        <Text style={styles.item}>{item.name}</Text>
-                    )}
+                <Button
+                    title="Buzon"
+                    onPress={() => navigation.navigate('NotificationBackground')}
+                    color="#6495ED"
                 />
-                <Text style={styles.text1}>Categorias:</Text>
-            
-                <Text style={styles.text2}>Servicio de taller</Text>
-                <Image style={styles.imagecar} source={require('./css/taller.jpg')} />
-                <TouchableOpacity style={styles.button} onPress={() => Alert.alert('mirar catalogo')}>
-                    <Text style={styles.buttonText}>Agendar cita</Text>
-                </TouchableOpacity>
-
-                
-
             </View>
+            <View style={styles.buttonContainer}>
+                <Button
+                    title="Historial"
+                    onPress={() => navigation.navigate('HistoryBackground')}
+                    color="#6495ED"
+                />
+                <Button
+                    title="Servicio"
+                    onPress={() => navigation.navigate('ServiceBackground')}
+                    color="#6495ED"
+                />
+            </View>
+        </View>
     );
 }
 
 const styles = StyleSheet.create({
+    buttonContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        width: '80%',
+        padding: 10,
+    },
     container: {
         flex: 1,
         backgroundColor: "rgb(70, 130, 180)",

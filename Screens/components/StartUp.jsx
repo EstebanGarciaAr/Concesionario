@@ -35,7 +35,30 @@ function StartUp({ navigation }) {
                 onChangeText={handleSearch}
                 value={searchQuery}
             />
-
+            <View style={styles.buttonContainer}>
+                <Button
+                    title="Cotizacion"
+                    onPress={() => navigation.navigate('Price')}
+                    color="#6495ED"
+                />
+                <Button
+                    title="Contacto"
+                    onPress={() => navigation.navigate('Contact')}
+                    color="#6495ED"
+                />
+            </View>
+            <View style={styles.buttonContainer}>
+                <Button
+                    title="Vehiculos"
+                    onPress={() => navigation.navigate('VehicleList')}
+                    color="#6495ED"
+                />
+                <Button
+                    title="Buscar"
+                    onPress={() => navigation.navigate('VehicleSearch')}
+                    color="#6495ED"
+                />
+            </View>
             <View style={styles.buttonContainer}>
                 <Button
                     title="Manejo"

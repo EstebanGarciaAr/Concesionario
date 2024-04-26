@@ -1,22 +1,23 @@
 import React from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 
-
 const Contact = () => {
     return (
         <View style={styles.container}>
-            <Image style={styles.logo}
-                source={require('./css/logo blanco.png')} />
+            <View style={styles.header}>
+                <Image style={styles.image}
+                    source={require('./css/logo blanco.png')} />
 
-            <Text style={styles.title}>Drive Market</Text>
+                <Text style={styles.title}>Drive Market</Text>
+
+            </View>
+
             <Text style={styles.text}>Contactanos</Text>
-            <Text style={styles.info}>Estamos ubicados en Medellin Antiquia</Text>
-            <Text style={styles.info}> calle 76d N88c-71</Text>
+            <Text style={styles.info}>Estamos ubicados en Medellin Antioquia</Text>
+            <Text style={styles.info}>Calle 76d N88c-71</Text>
             <Text style={styles.info}>Teléfono: 300673535</Text>
             <Text style={styles.info}>Correo Electrónico: drivemarket@gmail.com</Text>
-            <Image style={styles.confessionalImage}
-                source={require('./css/ImagenConse.jpeg')} />
-
+            <Image style={styles.confessionalImage} source={require('./css/ImagenConse.jpeg')} />
         </View>
     );
 }
@@ -31,11 +32,16 @@ const styles = StyleSheet.create({
         borderWidth: 15,
         borderColor: 'white',
     },
+    header: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 20,
+    },
     title: {
         color: 'white',
         fontSize: 30,
         textAlign: 'center',
-        marginTop: 20
+        marginLeft: 10,
     },
     text: {
         color: 'white',
@@ -48,16 +54,14 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         alignItems: 'center',
     },
-    // imagen de carro
-    logo: {
-        height: 10,
-        width: 10,
-        marginBottom: 2,
+    image: {
+        height: 50,
+        width: 50,
     },
     confessionalImage: {
-        height: 300,
-        width: 300,
-        marginTop:20,
+        height: 240,
+        width: 250,
+        marginTop: 20,
         marginBottom: 2,
     }
 });

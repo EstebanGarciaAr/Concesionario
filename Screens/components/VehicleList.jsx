@@ -1,11 +1,16 @@
-import React from "react"; 
+import React,{useContext, useEffect, Fragment} from "react"; 
 import { Image, Text, View, StyleSheet, ScrollView, Button } from "react-native";
-//import { useNavigation } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
+import FirebaseContext from "../../context/firebase/firebaseContext";
+import CarContext from "../../context/car/carContext";
 
 
 
 const VehicleList = () => {
     //const navigation = useNavigation();
+    //const{menu, vehiclesGet} = useContext(FirebaseContext)
+    //const{selectVehicle} = useContext(CarContext)
+    //useEffect(()=>{vehiclesGet()},[])
 
 
     const vehicleItem = (list) => (

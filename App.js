@@ -9,6 +9,8 @@ import NotificationBackground from './Screens/components/notificationModule/Noti
 import HistoryBackground from './Screens/components/serviceHistoryModule/HistoryBackground'
 import ServiceBackground from './Screens/components/serviceRequestModule/ServiceBackground' 
 import VehicleList from "./Screens/components/VehicleList"
+import VehicleDetail from "./Screens/components/VehicleDetail"
+import Order from "./Screens/components/Order"
 import VehicleSearch from "./Screens/components/VehicleSearch"
 import DrivingTest from "./Screens/components/DrivingTest"
 import Contact from "./Screens/components/Contact"
@@ -28,6 +30,8 @@ export const App =() => {
                 <Stack.Screen name='StartUp' component={StartUp}/>
                 <Stack.Screen name='VehicleSearch' component={VehicleSearch}/>
                 <Stack.Screen name='VehicleList' component={VehicleList}/>
+                <Stack.Screen name='VehicleDetail' component={VehicleDetail}/>
+                <Stack.Screen name='Order' component={Order}/>
                 <Stack.Screen name='Price' component={Price}/>
                 <Stack.Screen name='NotificationBackground' component={NotificationBackground}/>
                 <Stack.Screen name='HistoryBackground' component={HistoryBackground}/>

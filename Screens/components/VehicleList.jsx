@@ -16,6 +16,11 @@ const VehicleList = () => {
         vehiclesGet()
     }, [])
 
+    const handleSelectVehicle = (vehicle) => {
+        selectVehicle(vehicle); 
+        navigation.navigate('VehicleDetail', { vehicle }); 
+    };
+
     return(
         <NativeBaseProvider>
             <ScrollView>
@@ -23,9 +28,9 @@ const VehicleList = () => {
                     {menu.map((vehicle,i)=>{
                         const {brand,description,img,model,price,title,year,id} = vehicle
                         return(
-                            <Fragment>
+                            <Fragment key={id}>
                                 <Avatar size="200px" source={{uri:img}}></Avatar>
-                                <List.Item title = {title} description = {description} onPress={()=> navigation.navigate('VehicleDetail')}>
+                                <List.Item title = {title} description = {description} onPress={()=> handleSelectVehicle(vehicle)}>
                                     <Text numberOfLines={1}>{title}</Text>
                                     <Text>{price}</Text>
                                 </List.Item>

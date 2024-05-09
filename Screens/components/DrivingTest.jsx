@@ -1,6 +1,8 @@
-import React,{useState} from "react";
-import { TextInput, Text, View, StyleSheet, SafeAreaView, Button, Alert } from "react-native";
-import {Picker} from '@react-native-picker/picker';
+import React, { useState } from "react";
+import { TextInput, Text, View, StyleSheet, SafeAreaView, Button, Alert, Image,ScrollView } from "react-native";
+import { Picker } from '@react-native-picker/picker';
+
+
 
 const DrivingTest = () => {
 
@@ -62,60 +64,85 @@ const DrivingTest = () => {
     };
 
 
-    
+
     return (
-        <View style={styles.container1}>
+        <ScrollView contentContainerStyle={styles.scrollViewContainer}>
+            <View style={styles.header}>
+                <Image style={styles.image} source={require('./css/logo blanco.png')} />
+                <Text style={styles.headerTitle}>Drive Market</Text>
+            </View>
             <View style={styles.container2}>
                 <Text style={styles.title}>AGENDA TU PRUEBA DE MANEJO</Text>
-                
-                <SafeAreaView/>
-                <Text style={[styles.title,styles.data]}>Nombre*</Text>
-                <TextInput style={styles.placeholder}  placeholder="Nombre" value={name} onChangeText={setName}  maxLength={20} keyboardType="string"/>
-                <Text style={[styles.title,styles.data]}>Apellido*</Text>
-                <TextInput style={styles.placeholder} placeholder="Apellido" value={lastName} onChangeText={setLastName}  maxLength={20} keyboardType="string"/>
-                <Text style={[styles.title,styles.data]}>Telefono*</Text>
-                <TextInput style={styles.placeholder} placeholder="### ### ####" value={phone} onChangeText={setPhone} keyboardType="phone-pad"/>
-                <Text style={[styles.title,styles.data]}>Numero Identificación*</Text>
+
+                <SafeAreaView />
+                <Text style={[styles.title, styles.data]}>Nombre*</Text>
+                <TextInput style={styles.placeholder} placeholder="Nombre" value={name} onChangeText={setName} maxLength={20} keyboardType="string" />
+                <Text style={[styles.title, styles.data]}>Apellido*</Text>
+                <TextInput style={styles.placeholder} placeholder="Apellido" value={lastName} onChangeText={setLastName} maxLength={20} keyboardType="string" />
+                <Text style={[styles.title, styles.data]}>Telefono*</Text>
+                <TextInput style={styles.placeholder} placeholder="### ### ####" value={phone} onChangeText={setPhone} keyboardType="phone-pad" />
+                <Text style={[styles.title, styles.data]}>Numero Identificación*</Text>
                 <TextInput style={styles.placeholder} placeholder="0000000000" value={idNumber} onChangeText={setIdNumber} maxLength={11} keyboardType="numeric" />
-                <Text style={[styles.title,styles.data]}>Fecha para tu Prueba de Manejo*</Text>
-                <TextInput style={styles.placeholder} placeholder="DD/MM/AAAA" value={date} onChangeText={setDate}/>
-                <Text style={[styles.title,styles.data]}>Hora para tu Prueba de Manejo*</Text>
-                <TextInput style={styles.placeholder} placeholder="HH/MM: AM/PM" value={time} onChangeText={setTime}/>
-                <Text style={[styles.title,styles.data]}>¿Qué Vehículo Quieres Probar?</Text>
+                <Text style={[styles.title, styles.data]}>Fecha para tu Prueba de Manejo*</Text>
+                <TextInput style={styles.placeholder} placeholder="DD/MM/AAAA" value={date} onChangeText={setDate} />
+                <Text style={[styles.title, styles.data]}>Hora para tu Prueba de Manejo*</Text>
+                <TextInput style={styles.placeholder} placeholder="HH/MM: AM/PM" value={time} onChangeText={setTime} />
+                <Text style={[styles.title, styles.data]}>¿Qué Vehículo Quieres Probar?</Text>
                 <Picker style={styles.placeholder} selectedVehicle={selectedVehicle} onValueChange={(itemValue) => setSelectedVehicle(itemValue)}>
-                    <Picker.Item label="Mini Cooper" value="mini"/>
-                    <Picker.Item label="Renault" value="renault"/>
-                    <Picker.Item label="Toyota" value="toyota"/>
+                    <Picker.Item label="Mini Cooper" value="mini" />
+                    <Picker.Item label="Renault" value="renault" />
+                    <Picker.Item label="Toyota" value="toyota" />
                 </Picker>
                 <View style={styles.button}>
-                    <Button  title="Agendar Prueba de Manejo" onPress={handleValidation}/>
+                    <Button title="Agendar Prueba de Manejo" onPress={handleValidation} />
                 </View>
                 {error ? <Text style={styles.error}>{error}</Text> : null}
             </View>
-        </View>
+        </ScrollView>
     )
 }
 
 const styles = StyleSheet.create({
-    container2:{
+    header: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 20,
+    },
+    headerTitle: {
+        color: 'white',
+        fontSize: 30,
+        textAlign: 'center',
+        marginLeft: 10,
+    },
+    image: {
+        height: 50,
+        width: 50,
+    },
+    container2: {
         justifyContent: 'flex-start',
         backgroundColor: '#bbbec5',
         marginLeft: 15,
         marginRight: 15,
         marginTop: 15,
         marginBottom: 15
+
     },
-    container1:{
-        justifyContent: 'flex-start',
-        backgroundColor: '#4682B4'
+    scrollViewContainer: {
+        flexGrow: 1,
+        backgroundColor: "rgb(70, 130, 180)",
+        paddingTop: 50,
+        paddingHorizontal: 20,
+        borderWidth: 10,
+        borderColor: 'white'
+
     },
-    title:{
+    title: {
         fontSize: 26,
         color: "black",
         textAlign: 'center',
         marginBottom: 4
     },
-    data:{
+    data: {
         fontSize: 22,
         textAlign: 'left',
         marginLeft: 15,
@@ -140,7 +167,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
         marginBottom: 10
     },
-    picker:{
+    picker: {
         fontSize: 18,
         textAlign: 'left',
         marginLeft: 15,
@@ -152,3 +179,4 @@ const styles = StyleSheet.create({
 })
 
 export default DrivingTest
+

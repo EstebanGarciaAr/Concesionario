@@ -1,15 +1,13 @@
 import React from "react";
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
 
 const Contact = () => {
     return (
-        <View style={styles.container}>
+        <ScrollView contentContainerStyle={styles.scrollViewContainer}>
             <View style={styles.header}>
                 <Image style={styles.image}
                     source={require('./css/logo blanco.png')} />
-
                 <Text style={styles.title}>Drive Market</Text>
-
             </View>
 
             <Text style={styles.text}>Contactanos</Text>
@@ -17,20 +15,22 @@ const Contact = () => {
             <Text style={styles.info}>Calle 76d N88c-71</Text>
             <Text style={styles.info}>Teléfono: 300673535</Text>
             <Text style={styles.info}>Correo Electrónico: drivemarket@gmail.com</Text>
-            <Image style={styles.confessionalImage} source={require('./css/ImagenConse.jpeg')} />
-        </View>
+            <View style={styles.conseImageContainer}>
+                <Image style={styles.conseImage} source={require('./css/ImagenConse.jpeg')} />
+            </View>
+        </ScrollView>
     );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
+
+    scrollViewContainer: {
+        flexGrow: 1,
         backgroundColor: "rgb(70, 130, 180)",
         paddingTop: 50,
         paddingHorizontal: 20,
-        alignItems: 'center',
-        borderWidth: 15,
-        borderColor: 'white',
+        borderWidth: 10,
+        borderColor: 'white'
     },
     header: {
         flexDirection: 'row',
@@ -58,9 +58,12 @@ const styles = StyleSheet.create({
         height: 50,
         width: 50,
     },
-    confessionalImage: {
+    conseImageContainer: {
+        alignItems: 'center',
+    },
+    conseImage: {
         height: 240,
-        width: 250,
+        width: 280,
         marginTop: 20,
         marginBottom: 2,
     }

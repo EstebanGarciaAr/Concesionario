@@ -3,7 +3,7 @@ import { StyleSheet, Text, Button, View, Image, TextInput, ScrollView } from "re
 import { useNavigation } from "@react-navigation/native";
 
 function StartUp({ navigation }) {
-    const [searchQuery, setSearchQuery] = useState('');
+    const [searchQuery, setSearchQuery] = useState(''); //hook usestate para definir el estado local searchquery que almacena las consultas, y el set actualiza el estado  
     const [filteredData, setFilteredData] = useState([]);
 
     const data = [
@@ -69,8 +69,6 @@ function StartUp({ navigation }) {
 
             </View>
 
-
-
             <View style={styles.centeredContainer}>
                 <Text style={styles.textCotizar}> ¿Quieres saber cuánto cuesta tu próximo automóvil?</Text>
                 <Image style={styles.imaCotizar} source={require('./css/cotizar.jpg')} />
@@ -90,7 +88,7 @@ function StartUp({ navigation }) {
                     onPress={() => navigation.navigate('DrivingTest')}
                     color="#6495ED"
                 />
-                
+
             </View>
             <View style={styles.centeredContainer}>
                 <Text style={styles.textTituloTaller}> Servicio de taller</Text>
@@ -100,22 +98,22 @@ function StartUp({ navigation }) {
                     onPress={() => navigation.navigate('ServiceBackground')}
                     color="#6495ED"
                 />
-                 <Text style={styles.textHistorial}> Historial de servicios de taller</Text>
-                 <Image style={styles.imaHistorial} source={require('./css/historial.png')} />
+                <Text style={styles.textHistorial}> Historial de servicios de taller</Text>
+                <Image style={styles.imaHistorial} source={require('./css/historial.png')} />
                 <Button
                     title="Historial"
                     onPress={() => navigation.navigate('HistoryBackground')}
                     color="#6495ED"
                 />
             </View>
-         <View style={styles.textContainer}>
-         <Text style={styles.textBuzon}>Mira tus mensajes:</Text>
-         <Button
+            <View style={styles.textContainer}>
+                <Text style={styles.textBuzon}>Mira tus mensajes:</Text>
+                <Button
                     title="Buzon"
                     onPress={() => navigation.navigate('NotificationBackground')}
                     color="#6495ED"
                 />
-         </View>
+            </View>
 
         </ScrollView>
     );
@@ -238,8 +236,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginLeft: 5,
     },
-     //seccion taller
-     textTituloTaller: {
+    //seccion taller
+    textTituloTaller: {
         marginTop: 5,
         color: 'white',
         fontSize: 20,
@@ -247,14 +245,14 @@ const styles = StyleSheet.create({
         marginLeft: 15,
         marginBottom: 1,
     },
-     textTaller: {
+    textTaller: {
         marginTop: 5,
         color: 'white',
         fontSize: 15,
         marginLeft: 5,
     },
-     //seccion historial
-     textHistorial: {
+    //seccion historial
+    textHistorial: {
         marginTop: 5,
         color: 'white',
         fontSize: 15,
@@ -274,7 +272,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginLeft: 5,
     },
-   
+
 });
 
 export default StartUp;

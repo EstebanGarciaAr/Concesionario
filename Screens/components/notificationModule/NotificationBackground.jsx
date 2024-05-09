@@ -19,10 +19,10 @@ const NotificationBackground = () => {
 const styles = StyleSheet.create({
   contains:{
     flex:1,
-    backgroundColor:'#4682b4',
+    backgroundColor: "rgb(70, 130, 180)",
   },
   title:{
-    color:'black',
+    color:'white',
     fontSize:25,
     textAlign:'center',
     fontWeight:'bold',

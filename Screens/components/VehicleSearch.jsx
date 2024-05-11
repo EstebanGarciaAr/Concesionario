@@ -1,5 +1,5 @@
-import {Text, TextInput, View, StyleSheet, SafeAreaView, Button, Alert} from "react-native";
-import React, {useState} from 'react'
+import { Text, TextInput, View, StyleSheet, SafeAreaView, Button, Alert, Image } from "react-native";
+import React, { useState } from 'react'
 
 const VehicleSearch = () => {
 
@@ -26,7 +26,7 @@ const VehicleSearch = () => {
         if (!/^(\d{4})\/([0-9])$/.test(year.trim())) {
             errors += 'El campo de año debe tener 4 dígitos.\n';
         }
-        
+
 
         setError(errors);
         if (errors) {
@@ -37,36 +37,40 @@ const VehicleSearch = () => {
     };
 
 
-    return(
+    return (
         <View style={styles.container}>
-            <SafeAreaView/>
+            <SafeAreaView />
+            <View style={styles.header}>
+                <Image style={styles.image} source={require('./css/logo blanco.png')} />
+                <Text style={styles.title}>Drive Market</Text>
+            </View>
             <Text style={styles.title}>Buscar Vehículos</Text>
             <View style={styles.containerInput}>
-                <TextInput style={styles.input}  placeholder="Ingresa tu busqueda" maxLength={20} value={search} onChangeText={setSearch}/>
+                <TextInput style={styles.input} placeholder="Ingresa tu busqueda" maxLength={20} value={search} onChangeText={setSearch} />
             </View>
             <View>
-                    <Button  title="Filtro Avanzado" onPress={() => setFilters(!showFilters)}/>
-                    {showFilters && (
-                        <>
-                            <View style={[styles.containerInput,styles.containerFilter]}>
-                                <TextInput style={styles.input} placeholder="Marca" value={brand} onChangeText={setBrand}/>
-                            </View>
-                            <View style={[styles.containerInput,styles.containerFilter]}>
-                                <TextInput style={styles.input} placeholder="Modelo" value={model} onChangeText={setModel}/>
-                            </View>
-                            <View style={[styles.containerInput,styles.containerFilter]}>
-                                <TextInput style={styles.input} placeholder="Año" value={year} onChangeText={setYear} keyboardType="numeric"/>
-                            </View>
-                            <View style={[styles.containerInput,styles.containerFilter]}>
-                                <TextInput style={styles.input} placeholder="Precio" keyboardType="numeric"/>
-                            </View>
-                        </>
-                    )}
+                <Button title="Filtro Avanzado" onPress={() => setFilters(!showFilters)} />
+                {showFilters && (
+                    <>
+                        <View style={[styles.containerInput, styles.containerFilter]}>
+                            <TextInput style={styles.input} placeholder="Marca" value={brand} onChangeText={setBrand} />
+                        </View>
+                        <View style={[styles.containerInput, styles.containerFilter]}>
+                            <TextInput style={styles.input} placeholder="Modelo" value={model} onChangeText={setModel} />
+                        </View>
+                        <View style={[styles.containerInput, styles.containerFilter]}>
+                            <TextInput style={styles.input} placeholder="Año" value={year} onChangeText={setYear} keyboardType="numeric" />
+                        </View>
+                        <View style={[styles.containerInput, styles.containerFilter]}>
+                            <TextInput style={styles.input} placeholder="Precio" keyboardType="numeric" />
+                        </View>
+                    </>
+                )}
             </View>
             <View style={styles.button}>
-                    <Button  title="Buscar" onPress={handleValidation}/>
+                <Button title="Buscar" onPress={handleValidation} />
             </View>
-                {error ? <Text style={styles.error}>{error}</Text> : null}
+            {error ? <Text style={styles.error}>{error}</Text> : null}
         </View>
     );
 };
@@ -84,12 +88,28 @@ const styles = StyleSheet.create({
         marginTop: 15
     },
     container: {
-        backgroundColor: '#4682B4',
+        backgroundColor: "rgb(70, 130, 180)",
         justifyContent: 'flex-start',
+    },
+    header: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 20,
+    },
+    //Logo
+    title: {
+        color: 'white',
+        fontSize: 30,
+        textAlign: 'center',
+        marginLeft: 10,
+    },
+    image: {
+        height: 50,
+        width: 50,
     },
     title: {
         fontSize: 26,
-        color: "black",
+        color: "white",
         textAlign: "center",
         marginTop: 20
     },
@@ -98,13 +118,14 @@ const styles = StyleSheet.create({
         textAlign: "center",
     },
     button: {
+        backgroundColor: "#6495ED",
         fontSize: 18,
-        backgroundColor: "black",
         width: '50%',
         padding: 10,
         marginLeft: 105,
         marginTop: 10,
         marginBottom: 10
+
     },
     containerFilter: {
         marginHorizontal: 100,

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, Image, Button, Alert, TextInput, } from "react-native";
+import { StyleSheet, Text, View, Image, Button, Alert, TextInput, ScrollView } from "react-native";
 
 const Price = () => {
     const [name, setName] = useState('');
@@ -48,7 +48,7 @@ const Price = () => {
         else if (!/^[a-zA-Z]*$/.test(ciudad.trim())) {
             errors += 'La ciudad debe estar en el formato correcto, solo acepta letras.\n';
         }
-       
+
 
         setError(errors);
         if (errors) {
@@ -59,8 +59,12 @@ const Price = () => {
     };
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.title}>Drive Market</Text>
+        <ScrollView contentContainerStyle={styles.scrollViewContainer}>
+            <View style={styles.header}>
+                <Image style={styles.image}
+                    source={require('./css/logo blanco.png')} />
+                <Text style={styles.title}>Drive Market</Text>
+            </View>
             <Text style={styles.text}>Solicitud de Cotización</Text>
             <Text style={styles.text1}>¡Diligencie en su totalidad el formulario para asi poder contactarte y brindarte toda la información!</Text>
 
@@ -124,32 +128,41 @@ const Price = () => {
                 color="#bcbfc2"
                 onPress={() => {
                     handleRequestQuote();
-                    handleValidation(); 
+                    handleValidation();
                 }}
             />
 
-                {error ? <Text style={styles.error}>{error}</Text> : null}
+            {error ? <Text style={styles.error}>{error}</Text> : null}
 
-        </View>
+        </ScrollView>
     );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
+
+    scrollViewContainer: {
+        flexGrow: 1,
         backgroundColor: "rgb(70, 130, 180)",
         paddingTop: 50,
-        alignItems: 'center',
         paddingHorizontal: 20,
         borderWidth: 10,
-        borderColor: 'white',
+        borderColor: 'white'
     },
+    header: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 20,
+    },
+    //Logo
     title: {
         color: 'white',
         fontSize: 30,
         textAlign: 'center',
-        marginTop: 20
-
+        marginLeft: 10,
+    },
+    image: {
+        height: 50,
+        width: 50,
     },
     text1: {
         color: 'white',
@@ -170,11 +183,7 @@ const styles = StyleSheet.create({
         textAlign: 'right'
 
     },
-    image: {
-        height: 100,
-        width: 100,
-        marginBottom: 20,
-    },
+
     input: {
         height: 40,
         backgroundColor: "white",
@@ -192,11 +201,6 @@ const styles = StyleSheet.create({
     button: {
         marginBottom: 100,
         marginTop: 20,
-    },
-    image: {
-        height: 10,
-        width: 10,
-        marginBottom: 2,
     },
 });
 

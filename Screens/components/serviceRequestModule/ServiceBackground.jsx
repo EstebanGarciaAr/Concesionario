@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, StyleSheet, Text, ScrollView, Button, Alert } from 'react-native'
+import { View, StyleSheet, Text, ScrollView, Button, Alert, Image } from 'react-native'
 import ServiceAppbar from './ServiceAppbar'
 import ServiceModule from './ServiceModule'
 import ServiceCalendar from './ServiceCalendar'
@@ -14,11 +14,11 @@ const ServiceBackground = () => {
         <View style={styles.header}>
           <Text style={styles.title}>Drive Market</Text>
         </View>
-        <Text style={styles.title}>
+        <Text style={styles.title1}>
           TIPO DE VEHICULO
         </Text>
         <ServiceModule />
-        <Text style={styles.title}>
+        <Text style={styles.title1}>
           FECHA DISPONIBLE
         </Text>
         <ServiceCalendar />
@@ -45,6 +45,8 @@ const styles = StyleSheet.create({
     fontSize: 25,
     textAlign: 'center',
     fontWeight: 'bold',
+    marginBottom: 8,//abajo
+    marginTop: 40,//arriba
   },
   //Logo
   title: {
@@ -52,6 +54,10 @@ const styles = StyleSheet.create({
     fontSize: 30,
     textAlign: 'center',
     marginLeft: 10,
+  },
+  imageLogo: {
+    height: 50,
+    width: 50,
   },
 })
 

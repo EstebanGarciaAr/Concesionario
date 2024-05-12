@@ -2,10 +2,14 @@
   "expo": {
     "name": "Concesionario",
     "slug": "Concesionario",
+<<<<<<< Updated upstream
     "platforms": [
       "ios",
       "android"
     ],
+=======
+    "sdkVersion": "51.0.0",
+>>>>>>> Stashed changes
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

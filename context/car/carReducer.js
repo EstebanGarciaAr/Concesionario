@@ -1,4 +1,8 @@
-import { SELECT_VEHICLES } from '../../types'
+import { SELECT_VEHICLES, 
+    SAVE_ORDER,
+    DISPLAY_ORDER,
+    DELETE_ORDER
+} from '../../types'
 export default (state, action) => {
     switch(action.type){
         case SELECT_VEHICLES:
@@ -6,7 +10,21 @@ export default (state, action) => {
                 ...state, 
                 buyVehicle: action.payload
             }
-
+        case SAVE_ORDER:
+            return{
+                ...state,
+                car: [...state,action.payload]
+            }
+        case DISPLAY_ORDER:
+            return{
+                ...state,
+                total: action.payload
+            }
+        case DELETE_ORDER:
+            return{
+                ...state,
+                car: state.car.filter()
+            }
         default:
             return state;
     }

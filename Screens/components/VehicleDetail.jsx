@@ -16,6 +16,7 @@ const VehicleDetail = ({ route }) => {
 
     // Destructurar las propiedades del vehículo seleccionado
     const { brand, description, img, model, price, title, year, id } = vehicle;
+    
 
     return (
         <NativeBaseProvider>

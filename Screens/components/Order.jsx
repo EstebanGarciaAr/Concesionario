@@ -7,13 +7,13 @@ import {Button, Text, TextInput, Card} from "react-native-paper";
 import CarContext from "../../context/car/carContext";
 import FirebaseContext from "../../context/firebase/firebaseContext";
 
-const Order = () => {
+const Order = ( ) => {
    const[cantidad, guardarCantidad] = useState(1);
    const[total, guardarTotal] = useState(0);
 
    //traer contextos
-   const {car, guardarVehiculo} = useContext(CarContext)
-   const {price} = car
+   const {car, selectVehicle} = useContext(CarContext)
+   const {price, description} = car
 
    const incrementar = () =>{
     const nuevaCantidad = parseInt(cantidad)+1
@@ -28,8 +28,11 @@ const Order = () => {
    }
 
    const calcularTotal= () =>{
-    const totalPagar = cantidad * price;
-    guardarTotal (totalPagar)
+    //const totalPagar = cantidad * price;
+    //guardarTotal (totalPagar)
+    console.log(price)
+    console.log(description)
+  
    }
 
    const confirmarCompra =()=>{

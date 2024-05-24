@@ -52,6 +52,7 @@ const CarState = props => {
             value={{
                 car: state.car,
                 buyVehicle: state.buyVehicle,
+                total: state.total,
                 selectVehicle,
                 guardarVehiculo,
                 mostrarResumen,

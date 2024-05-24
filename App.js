@@ -11,6 +11,8 @@ import ServiceBackground from './Screens/components/serviceRequestModule/Service
 import VehicleList from "./Screens/components/VehicleList"
 import VehicleDetail from "./Screens/components/VehicleDetail"
 import Order from "./Screens/components/Order"
+import ResumenVehicle from './Screens/components/ResumenVehicle'
+import ProgressVehicle from './Screens/components/ProgressVehicle'
 import VehicleSearch from "./Screens/components/VehicleSearch"
 import DrivingTest from "./Screens/components/DrivingTest"
 import Contact from "./Screens/components/Contact"
@@ -32,6 +34,8 @@ export const App =() => {
                 <Stack.Screen name='VehicleList' component={VehicleList}/>
                 <Stack.Screen name='VehicleDetail' component={VehicleDetail}/>
                 <Stack.Screen name='Order' component={Order}/>
+                <Stack.Screen name='ResumenVehicle' component={ResumenVehicle}/>
+                <Stack.Screen name='ProgressVehicle' component={ProgressVehicle}/>
                 <Stack.Screen name='Price' component={Price}/>
                 <Stack.Screen name='NotificationBackground' component={NotificationBackground}/>
                 <Stack.Screen name='HistoryBackground' component={HistoryBackground}/>

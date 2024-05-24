@@ -8,6 +8,9 @@ import CarContext from "../../context/car/carContext";
 import FirebaseContext from "../../context/firebase/firebaseContext";
 
 const Order = ( ) => {
+
+    const navigation = useNavigation();
+
    const[cantidad, guardarCantidad] = useState(1);
    const[total, guardarTotal] = useState(0);
 
@@ -42,6 +45,15 @@ const Order = ( ) => {
         [
             {
                 text:'Confirmar',
+                onPress:()=>{
+                    const car = {
+                        ...car,
+                        cantidad, 
+                        total
+                    }
+                    selectVehicle(car)
+                    navigation.navigate('ResumenVehicle')
+                }
             },
             {
                 text:'Cancelar'

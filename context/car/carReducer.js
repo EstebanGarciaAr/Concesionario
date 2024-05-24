@@ -23,7 +23,7 @@ export default (state, action) => {
         case DELETE_ORDER:
             return{
                 ...state,
-                car: state.car.filter()
+                car: state.car.filter(articulo => articulo.id !== action.payload)
             }
         default:
             return state;

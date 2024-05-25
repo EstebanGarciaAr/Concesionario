@@ -1,109 +1,108 @@
-import React,{useContext, useEffect, Fragment, useState} from "react"; 
+import React, { useContext, useEffect, useState } from "react"; 
 import { Alert, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { Container, Box, FormControl, HStack, NativeBaseProvider, Input, Avatar } from "native-base";
-import {Button, Text, TextInput, Card, List} from "react-native-paper";
+import { Container, Box, NativeBaseProvider, Avatar } from "native-base";
+import { Button, Text, List } from "react-native-paper";
 
+import firebase from '../../firebase';
 import CarContext from "../../context/car/carContext";
-import FirebaseContext from "../../context/firebase/firebaseContext";
-import firebase from '../firebase';
 
-const ResumenVehicle = () => {
-    //contexto
-    const {car, total, mostrarResumen, eliminarProducto} = useContext(CarContext);
+const ResumenVehicle = ({ route }) => {
     const navigation = useNavigation();
+    const { car, eliminarProducto } = useContext(CarContext);
+        // Obtener el vehículo seleccionado de las props
+        const { vehicle } = route.params;
 
-    useEffect(()=>{
-        calcularTotal()
-    }, [car])
+        // Destructurar las propiedades del vehículo seleccionado
+        const { brand, description, img, model, price, title, year, id, cantidad } = vehicle;
 
-    const calcularTotal = () =>{
-        let nuevoTotal=0;
-        nuevoTotal = car.reduce((nuevoTotal, articulo) =>nuevoTotal + articulo.total, 0)
-        mostrarResumen(nuevoTotal);
-    }
+        const[total, guardarTotal] = useState(0);
 
-    const eliminarArticulo = id =>{
+    const eliminarArticulo = id => {
         Alert.alert(
-            '¿Desea eliminar el articulo?',
-            'Se va a eliminar el articulo',
+            '¿Desea eliminar el artículo?',
+            'Se va a eliminar el artículo',
             [
                 {
-                    text:'Confirmar',
-                    onPress:()=>{
-                        //Eliminar del state el articulo
-                        eliminarProducto(id)
+                    text: 'Confirmar',
+                    onPress: () => {
+                        // Eliminar del state el artículo
+                        eliminarProducto(id);
                     }
                 },
                 {
-                    text:'Cancelar',
+                    text: 'Cancelar',
                     style: 'cancel'
                 }
             ]
-        )
-    }
+        );
+    };
 
-    const enviarPedido = () =>{
+    const enviarPedido = () => {
         Alert.alert(
             'Enviar pedido',
             'Una vez enviado no se puede cambiar',
             [
                 {
-                    text:'Confirmar',
-                    onPress: async ()=>{
-                        //crear objeto con toda la informacion
-                        const pedidoCar ={
+                    text: 'Confirmar',
+                    onPress: async () => {
+                        // Crear objeto con toda la información
+                        const pedidoCar = {
                             tiempoEntrega: 0,
                             estado: false,
                             creado: Date.now(),
                             orden: car
-                        }
-                         //enviar a firebase
+                        };
+                        // Enviar a Firebase
                         try {
-                            const car = await firebase.db.collection('ordenes').add(pedidoCar)
-                            console.log(car.id)
-                            navigation.navigate(ProgressVehicle)
-                        
+                            const carRef = await firebase.db.collection('ordenes').add(pedidoCar);
+                            console.log(carRef.id);
+                            navigation.navigate('ProgressVehicle', { vehicle }); // Asegúrate de usar el nombre correcto de la ruta
                         } catch (error) {
-                            console.log(error)
+                            console.log(error);
                         }
                     }
                 },
                 {
-                    text:'Cancelar',
+                    text: 'Cancelar',
                     style: 'cancel'
                 }
             ]
-        )
-    }
+        );
+    };
 
+    const calcularTotal= () =>{
+        const totalPagar = cantidad * price;
+        guardarTotal (totalPagar)
+      
+       }
+       useEffect(()=>{
+        calcularTotal()
+       }, [cantidad]
+    )
 
-    return(
-        <Container>
-            <Box>
-                <Text>Resumen del pedido</Text>
-                {car.map((buyVehicle,i)=>{
-                    const {cantidad,title,img, id, price} = buyVehicle;
-                    return(
-                        <View key={id + i}>
-                            <Avatar size='70px' source={{uri:img}}></Avatar>
-                            <List.Item>
-                                <Text>{title}</Text>
-                                <Text>La cantidad es: {cantidad}</Text>
-                                <Text>El precio es: {price}</Text>
-                                <Button onPress={()=>eliminarArticulo(id)}>
-                                    <Text>Eliminar articulo</Text>
-                                </Button>
-                            </List.Item>
-                        </View>
-                    )
-                })}
-                <Button onPress={()=> enviarPedido()}>
-                    <Text>Enviar pedido</Text>
-                </Button>
-            </Box>
-        </Container>
+    return (
+        <NativeBaseProvider>
+            <Container>
+                <Box>
+                    <Text>Resumen del pedido</Text>
+                            <View>
+                                <Avatar size='70px' source={{ uri: img }}></Avatar>
+                                    <Text>{title}</Text>
+                                    <Text>La cantidad es: {cantidad}</Text>
+                                    <Text>El precio es: {price}</Text>
+                                    <Text>El total es: {total}</Text>
+                                    <Button onPress={() => eliminarArticulo(id)}>
+                                        <Text>Eliminar artículo</Text>
+                                    </Button>
+                            </View>
+                    <Button onPress={() => enviarPedido()}>
+                        <Text>Enviar pedido</Text>
+                    </Button>
+                </Box>
+            </Container>
+        </NativeBaseProvider>
     );
-}
+};
 
 export default ResumenVehicle;

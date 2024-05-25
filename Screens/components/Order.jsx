@@ -5,18 +5,22 @@ import { Container, Box, FormControl, HStack, NativeBaseProvider, Input } from "
 import {Button, Text, TextInput, Card} from "react-native-paper";
 
 import CarContext from "../../context/car/carContext";
-import FirebaseContext from "../../context/firebase/firebaseContext";
 
-const Order = ( ) => {
-
+const Order = ({ route }) => {
     const navigation = useNavigation();
+    const { car } = useContext(CarContext);
+
+    // Obtener el vehículo seleccionado de las props
+    const { vehicle } = route.params;
+
+    // Destructurar las propiedades del vehículo seleccionado
+    const { brand, description, img, model, price, title, year, id } = vehicle;
 
    const[cantidad, guardarCantidad] = useState(1);
    const[total, guardarTotal] = useState(0);
 
    //traer contextos
-   const {car, selectVehicle} = useContext(CarContext)
-   const {price, description} = car
+   const {selectVehicle} = useContext(CarContext)
 
    const incrementar = () =>{
     const nuevaCantidad = parseInt(cantidad)+1
@@ -31,10 +35,8 @@ const Order = ( ) => {
    }
 
    const calcularTotal= () =>{
-    //const totalPagar = cantidad * price;
-    //guardarTotal (totalPagar)
-    console.log(price)
-    console.log(description)
+    const totalPagar = cantidad * price;
+    guardarTotal (totalPagar)
   
    }
 
@@ -52,7 +54,7 @@ const Order = ( ) => {
                         total
                     }
                     selectVehicle(car)
-                    navigation.navigate('ResumenVehicle')
+                    navigation.navigate('ResumenVehicle', { vehicle })
                 }
             },
             {
@@ -89,7 +91,7 @@ const Order = ( ) => {
                             <Card>
                                 <Card.Actions>
                                     <Button
-                                        onPress={()=>confirmarCompra}
+                                        onPress={confirmarCompra}
                                     >
                                         <Text>Ordenar</Text>
                                     </Button>

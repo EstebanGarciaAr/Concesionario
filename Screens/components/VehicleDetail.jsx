@@ -37,7 +37,7 @@ const VehicleDetail = ({ route }) => {
                             <Text>Precio: {price}</Text>
                         </Card.Content>
                         <Card.Actions>
-                            <Button onPress={() => navigation.navigate('Order')}>
+                            <Button onPress={() => navigation.navigate('Order', { vehicle })}>
                                 <Text>Ordenar</Text>
                             </Button>
                         </Card.Actions>
